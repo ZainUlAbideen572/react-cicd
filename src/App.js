@@ -2,20 +2,22 @@ import React from "react"
 import ProductsList from "./products/ProductsList"
 import Users from "./Users/Users"
 import Cities from "./Cities/Cities"
-// import Events from "./Events"
-// import Cities from "./Cities/Cities"
+import Events from "./Events"
 import NewProduct from "./products/New Product"
+import Credentials from "./Credentials/Credentials"
 class App extends React.Component{
     render(){
         return<div>
-            {/* <ProductsList/> */}
+             {/* <ProductsList/> */}
           {/* <Users/> */}
-          <NewProduct/>
+            <Credentials/>
+          {/* <NewProduct/> */}
          
-           {/* <Cities/> */}
-           {/* <Events count={0}/> */}
+            {/* <Cities/> */}
+        {/* <Events count={0}/>  */}
+        {/* <Product/> */}
            {/* <Events count={20}/> */}
-           {/* <Cities/> */}
+    
     
  
         </div>
