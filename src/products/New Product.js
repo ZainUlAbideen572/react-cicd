@@ -6,6 +6,8 @@ class NewProduct extends React.Component {
     model: "",
     instock: false,
     price: 0,
+    Success:false,
+    haserror:false
     
   };
   oncontrolchange=(evt)=>{
@@ -13,41 +15,71 @@ class NewProduct extends React.Component {
   }
   // when the values are changing just update the state
   onsave=async()=>{
-   await  axios.post('https://fsa-api-b4.onrender.com/api/products',this.state)
-    console.log('success')
+    try{
+      await  axios.post('https://fsa-api-b4.onrender.com/api/products',this.state)
+      this.setState({Success:true,
+        brand:"",
+        price:"",
+        model:"",
+        discount:"",
+        haserror:false})
+
+    }
+     catch(e){
+      this.setState({Success:false,haserror:true})
+     }
   }
   // push the data once it is submitted
 
  
   render() {
+    const{brand,model,price,discount}=this.state
     return <div className="container m-3">
       <h4>Add new Product</h4>
       <form>
+        {this.state.Success?<div className="alert alert-success">
+     successfully operation completed
+        </div>:null}
+        {this.state.haserror?<div className="alert alert-danger">
+     something went wrong
+        </div>:null}
+        
         <div class="mb-3">
+         
           <label for="brand" class="form-label">Brand</label>
-          <input name="brand"type="text" class="form-control" id="brand" placeholder="brand"  onchange={this.oncontrolchange} />
+          <input value={brand} name="brand"type="text" class="form-control" id="brand" placeholder="brand"  onChange={this.oncontrolchange}/>
+          {!brand?<span>
+           <span className="text-danger">Brand requiredd</span>
+          </span>:null}
         </div>
         <div class="mb-3">
           <label for="model" class="form-label">model</label>
-          <input name="model"type="text" class="form-control" id="model" placeholder="model" onchange={this.oncontrolchange}/>
+          <input value={model}name="model"type="text" class="form-control" id="model" placeholder="model" onChange={this.oncontrolchange}/>
+          {!model?<span>
+           <span className="text-danger">model requiredd</span>
+          </span>:null}
         </div>
         <div class="mb-3 ">
           <label for="price" class="form-label">Price</label>
-          <input name="price"type="text" class="form-control" id="Price" placeholder="price" onchange={this.oncontrolchange} />
+          <input value={price}name="price"type="text" class="form-control" id="Price" placeholder="price" onChange={this.oncontrolchange} />
+          {!brand?<span>
+           <span className="text-danger">price requiredd</span>
+          </span>:null}
         </div>
         <div class="mb-3">
           <label for="instock" class="form-label">instock</label>
-          <input  name="instock" type="Checkbox" class="form-check-input" id="instock"  onchange={this.oncontrolchange}/>
-        </div>
-     
-      
-        <div class="mb-3">
+          <input  name="instock" type="Checkbox" class="form-check-input" id="instock"  onChange={this.oncontrolchange}/>
+          </div>
+     <div class="mb-3">
           <label for="discount" class="form-label">discount</label>
-          <input name="discount" type="text" class="form-control" id="discount" placeholder="discount"onchange={this.oncontrolchange}/>
+          <input value={discount} name="discount" type="text" class="form-control" id="discount" placeholder="discount" onChange={this.oncontrolchange}/>
+          {!brand?<span>
+           <span className="text-danger">discount requiredd</span>
+          </span>:null}
         </div>
 
       </form>
-      <button  className="btn btn-success" onClick={this.onsave}>save
+      <button  disabled={!brand||!price||!model}className="btn btn-success" onClick={this.onsave}>save
       <i className="fa fa-save"></i>
       </button>
     </div>
