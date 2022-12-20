@@ -5,13 +5,15 @@ import Cities from "./Cities/Cities"
 import Events from "./Events"
 import NewProduct from "./products/New Product"
 import  Newcredential  from "./Newcredential"
+import Counter from "./Counter"
 class App extends React.Component{
     render(){
         return<div>
-             {/* <ProductsList/> */}
+             {/* <ProductsList/>  */}
+             {/* <Counter/> */}
           {/* <Users/> */}
              {/* <Newcredential/> */}
-            <NewProduct/> 
+             <NewProduct/>  
          
             {/* <Cities/> */}
         {/* <Events count={0}/>  */}

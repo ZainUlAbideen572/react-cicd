@@ -9,7 +9,7 @@ const  Productitem=({product})=>{
     <img src={product.image} alt="iphone"  width="400" height="200"/>
     <button className="btn btn-danger btn-sm" disabled={product.instock}>button</button> */}
     <div className="card">
-        <img src={product.image}  className="card -img-top"/>
+        <img src={product.image} alt='product' className="card -img-top" width="100" height="100"/>
         <div className="Card-body">
         <div className="card-title">
             {product.brand} {product.price}
