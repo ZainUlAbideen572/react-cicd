@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const Header=()=>{
    return <nav class="navbar navbar-expand-lg bg-light">
        <div className="container">
-    <a class="navbar-brand" href="#">FSA</a>
+    <Link to="/" className="navbar-brand">FSA</Link>
    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
         <li className="nav-item"><Link  className="nav-link" to="/">Home</Link></li>
         <li className="nav-item"><Link  className="nav-link" to="/">Home</Link></li>
@@ -14,7 +14,7 @@ const Header=()=>{
         <li className="nav-item"><Link className="nav-link"to="/Khans">khans</Link></li>
         <li className="nav-item"><Link className="nav-link"to="/Events">Events</Link></li>
         <li className="nav-item"><Link className="nav-link"to="/city">cities</Link></li>
-        <li className="nav-item"><Link className="nav-link"to="/ProductsList">Productlist</Link></li>  
+        <li className="nav-item"><Link className="nav-link"to="/Products/ProductsList">ProductList</Link></li>  
     </ul>
     </div>
     </nav>

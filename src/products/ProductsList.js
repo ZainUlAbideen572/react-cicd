@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import Productitem from "./Productitem";
+import { Link } from "react-router-dom";
 
 class ProductsList extends React.Component{
     state={
@@ -19,9 +20,15 @@ class ProductsList extends React.Component{
    }
 render(){
     return<div>
+        <Link to="/Products/Productdetail/:id">
+        <Link  to="/Products/new"className="btn btn-success">
+            Add new product
+
+        </Link>
      <h1>products</h1>
      {this.state.response.data.map(product=><Productitem product={product}/>)}
        
+   </Link>
    </div>
 }
 }

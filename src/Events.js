@@ -7,6 +7,12 @@ class Events extends React.Component{
      }
     
   }
+  shouldComponentUpdate(){
+    return true;
+  }
+  componentDidUpdate(){
+    console.log('updated')
+  }
       inc=()=>{
         const current=this.state.count
         this.setState({ count: current+1})

@@ -9,12 +9,16 @@ import Contact from "./Contact"
 import Product from "./Product"
 import Users from "./Users/Users"
 import Khans from './Khans/Khans'
-import ProductsList from "./products/ProductsList"
+// import ProductsList from "./products/ProductsList"
 import Events from "./Events"
 import Cities from "./Cities/Cities"
+import ProductsList from "./products/ProductsList"
+import NewProduct from "./products/New Product"
+import Productdetail from "./products/Productdetail"
 class App extends React.Component{
     render(){
         return<div>
+     {/* <ProductsList/> */}
          <BrowserRouter>
            <Header/>
            <Routes>
@@ -24,12 +28,14 @@ class App extends React.Component{
             <Route path="/Product" element={<Product/>}/>
             <Route path="/Users" element={<Users/>}/>
             <Route path="/khans" element={<Khans/>}/>
-            <Route path="/ProductsList" element={<ProductsList/>}/>
+            <Route path="/Products/ProductsList" element={<ProductsList/>}/>
             <Route path="/Events" element={<Events/>}/>
             <Route path="/city" element={<Cities/>}/>
+            <Route path="/Products/new" element={<NewProduct/>}/>
+            <Route path="/Products/Productdetail/:id" element={<Productdetail/>}/>
            </Routes>
            <Footer/>
-        </BrowserRouter>
+        </BrowserRouter> 
     
     
  
