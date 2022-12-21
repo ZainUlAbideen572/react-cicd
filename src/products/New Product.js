@@ -62,7 +62,7 @@ class NewProduct extends React.Component {
         <div class="mb-3 ">
           <label for="price" class="form-label">Price</label>
           <input value={price}name="price"type="text" class="form-control" id="Price" placeholder="price" onChange={this.oncontrolchange} />
-          {!brand?<span>
+          {!price?<span>
            <span className="text-danger">price requiredd</span>
           </span>:null}
         </div>
@@ -73,7 +73,7 @@ class NewProduct extends React.Component {
      <div class="mb-3">
           <label for="discount" class="form-label">discount</label>
           <input value={discount} name="discount" type="text" class="form-control" id="discount" placeholder="discount" onChange={this.oncontrolchange}/>
-          {!brand?<span>
+          {!discount?<span>
            <span className="text-danger">discount requiredd</span>
           </span>:null}
         </div>

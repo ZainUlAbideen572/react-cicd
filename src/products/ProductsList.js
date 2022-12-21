@@ -11,7 +11,7 @@ class ProductsList extends React.Component{
     }
    constructor(){
     super()
-    axios.get('https://fsa-api-b4.onrender.com/api/products/page/1/limit/10')
+    axios.get('https://fsa-api-b4.onrender.com/api/products/page/3/limit/10')
     .then(res=>this.setState({response:res.data}))
     .catch(err=>{
         console.log(err)

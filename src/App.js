@@ -1,24 +1,35 @@
 import React from "react" 
-import ProductsList from "./products/ProductsList"
+
+import Header from "./Headers"
+import Footer from "./Footer"
+import { BrowserRouter ,Route,Routes } from "react-router-dom"
+import Home from "./Home"
+import About from "./About"
+import Contact from "./Contact"
+import Product from "./Product"
 import Users from "./Users/Users"
-import Cities from "./Cities/Cities"
+import Khans from './Khans/Khans'
+import ProductsList from "./products/ProductsList"
 import Events from "./Events"
-import NewProduct from "./products/New Product"
-import  Newcredential  from "./Newcredential"
-import Counter from "./Counter"
+import Cities from "./Cities/Cities"
 class App extends React.Component{
     render(){
         return<div>
-             {/* <ProductsList/>  */}
-             {/* <Counter/> */}
-          {/* <Users/> */}
-             {/* <Newcredential/> */}
-             <NewProduct/>  
-         
-            {/* <Cities/> */}
-        {/* <Events count={0}/>  */}
-        {/* <Product/> */}
-           {/* <Events count={20}/> */}
+         <BrowserRouter>
+           <Header/>
+           <Routes>
+            <Route path="/" element={<Home/>}/>
+            <Route path="/about" element={<About/>}/>
+            <Route path="/Contact" element={<Contact/>}/>
+            <Route path="/Product" element={<Product/>}/>
+            <Route path="/Users" element={<Users/>}/>
+            <Route path="/khans" element={<Khans/>}/>
+            <Route path="/ProductsList" element={<ProductsList/>}/>
+            <Route path="/Events" element={<Events/>}/>
+            <Route path="/city" element={<Cities/>}/>
+           </Routes>
+           <Footer/>
+        </BrowserRouter>
     
     
  
