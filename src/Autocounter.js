@@ -5,7 +5,7 @@ class Autocounter extends React.Component{
     }
     componentDidMount(){
         this.intreval=setInterval(()=>{
-            console.log('updating count',this.state.count)
+            // console.log('updating count',this.state.count)
             this.setState({count:this.state.count+1})
         },2000)
         // console.log(this.state.count)

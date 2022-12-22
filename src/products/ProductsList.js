@@ -1,35 +1,50 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Productitem from "./Productitem";
 import { Link } from "react-router-dom";
 
-class ProductsList extends React.Component{
-    state={
-        response:{
-            data:[],
-            metadata:{}
-        }
-    }
-   constructor(){
-    super()
-    axios.get('https://fsa-api-b4.onrender.com/api/products/page/3/limit/10')
-    .then(res=>this.setState({response:res.data}))
-    .catch(err=>{
-        console.log(err)
+const ProductsList=()=>{
+   
+    const[response,setResponse]=useState({
+        data:[],
+        metadata:{}
     })
-   }
-render(){
-    return<div>
+    const [haserror,sethaserror]=useState(false)
+          useEffect(()=>{
+            axios.get('https://fsa-api-b4.onrender.com/api/products/page/3/limit/10')
+            .then(res=>setResponse(res.data),
+            sethaserror(false))
+            .catch(err=>{
+               sethaserror(true)})
+},[])
+    
+    const  onNext=()=>
+        console.log('next')
+   const onprev=()=>console.log('prev')
+   return<div>
         <Link to="/Products/Productdetail/:id">
+        <div className="row">
+            <div className="col-2">
         <Link  to="/Products/new"className="btn btn-success">
             Add new product
-
-        </Link>
+            </Link>
+        </div>
+        <div className="col-1">
+         <button onClick={onprev} className="btn btn-secondary">
+         <i class="fa-solid fa-chevron-left"></i>
+         </button>
+        </div>
+        <div className="col-1">
+       <button onClick={onNext}className="btn btn-secondary">
+       <i class="fa-solid fa-chevron-right"></i>
+       </button>
+        </div>
+        </div>
      <h1>products</h1>
-     {this.state.response.data.map(product=><Productitem product={product}/>)}
-       
-   </Link>
+     {
+     response.data.map(product=><Productitem product={product}/>)}
+    </Link>
    </div>
-}
-}
+   
+    }
 export default ProductsList;

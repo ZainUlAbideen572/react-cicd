@@ -4,27 +4,25 @@
 // shouldcomponent didupdate
 // componentdidupdate
 // componentunmount.
-import React from "react";
+import React, { useEffect } from "react";
 import axios from "axios";
-class ProductDetail extends React.Component{
-    state={
-        product:{
-            reviews:[]
-        }
-    }
-
-    async componentDidMount(){
-      const res= await axios.get('https://fsa-api-b4.onrender.com/api/products/639be256f6cdd8e61b7ff1b0')
-      this.setState({product:res.data})
-      console.log(res)
-    }
-    render(){
-            const{product}=this.state
+import { useState } from "react";
+const ProductDetail =()=>{
+   const[product,setproduct]=useState({
+  reviews:[]
+})
+useEffect(()=>{
+  (async()=>{
+  const res=axios.get('https://fsa-api-b4.onrender.com/api/products')
+    .then(res=>setproduct(res.data))
+    console.log(res)
+  }) ()
+  },[])
+          
         return<div>
-<h1>User Reviews</h1>
+      <h1>User Reviews</h1>
             <h2>{product.brand} {product.model} </h2>
-        
-            <h1>{product.avgRating}</h1>
+               <h1>{product.avgRating}</h1>
             <button className="btn btn-success m-3">
               Add to cart
             </button>
@@ -37,5 +35,5 @@ class ProductDetail extends React.Component{
                 </div>)}
         </div>
     }
-}
+
 export default ProductDetail;

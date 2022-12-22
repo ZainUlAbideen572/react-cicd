@@ -14,7 +14,10 @@ const Header=()=>{
         <li className="nav-item"><Link className="nav-link"to="/Khans">khans</Link></li>
         <li className="nav-item"><Link className="nav-link"to="/Events">Events</Link></li>
         <li className="nav-item"><Link className="nav-link"to="/city">cities</Link></li>
-        <li className="nav-item"><Link className="nav-link"to="/Products/ProductsList">ProductList</Link></li>  
+        <li className="nav-item"><Link className="nav-link"to="/Products/ProductsList">ProductList</Link></li>
+        <div className="btn btn-warning m-3">signup</div>
+        <Link className="btn btn-success m-3" to="/Loginform">Login</Link> 
+        <div className="btn btn-danger m-3">Logout</div>    
     </ul>
     </div>
     </nav>

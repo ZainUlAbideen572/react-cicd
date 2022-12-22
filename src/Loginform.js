@@ -1,52 +1,53 @@
-import React from "react";
-class Loginform extends React.Component{
-    state={
-        name:"",
+import React, { useState } from "react";
+    function Loginform (){
+      const[User,setUser]=useState({
         email:"",
-        password:"",
-        haserror:false,
-        success:true
-    }
-    oncontrolchange=(evt)=>{
-        this.setState({[evt.target.name]:evt.target.value})
-    }
-    onsave=()=>{
+        name:"",
+        password:""
+      })
+  
+   function onsave(evt){
         // this.setState({success:true,haserror:false})
-        console.log(this.state)
+        console.log('logging in..')
+         evt.preventDefault();
     }
-    render(){
-        const{name,email,password}=this.state
+   const oninputchange=(evt)=>{
+    const newUser={...User,[evt.target.name]:evt.target.value}
+      setUser(newUser)
+    }
+    
+        
           return<div>
-            <form>
+            <form onSubmit={onsave}>
                 <div>
             <label for="email">Email address</label>
-    <input value={email} type="email" name="email" className="form-control" id="Email" placeholder="Enter email" onChange={this.oncontrolchange}/>
-{!email?<div>
+    <input onChange={oninputchange} type="email" name="email" className="form-control" id="Email" placeholder="Enter email"/>
+{/* {!email?<div>
 
     <span className="text-danger">email required</span>
     </div>
-              :null}
+              :null} */}
     </div>
     <div>
     <label className="form-label" for="name">Name</label>
-    <input value={name} type="text" name="name" className="form-control" id="Name" placeholder="Enter Name" onChange={this.oncontrolchange}/>
-    {!name?
+    <input  onChange={oninputchange} type="text" name="name" className="form-control" id="Name" placeholder="Enter Name" />
+    {/* {!name?
     <div>
         <span className="text-danger">name required</span>
-        </div>:null}
+        </div>:null} */}
     </div>
     <div>
     <label className="form-label" for="password">Password</label>
-    <input value={password} type="text" name="password" className="form-control" id="Password" placeholder="Enter password" onChange={this.oncontrolchange}/>
-    {!password?
+    <input onChange={oninputchange} type="password" name="password" className="form-control" id="Password" placeholder="Enter password"/>
+    {/* {!password?
     <div>
         <span className="text-danger">passwordrequired</span>
-        </div>:null}
+        </div>:null} */}
     </div>
-    <button onClick={this.onsave}className="btn btn-success">submit</button>
+    <button onClick={onsave}className="btn btn-success">submit</button>
             </form>
           </div>
           
     }
-}
+
 export default Loginform;
