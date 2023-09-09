@@ -1,19 +1,10 @@
 import React from "react";
-import { useState } from "react";
+import UseCounter from "./hooks/Use-counter";
 function Events(){
-    const [count,setcount]= useState(100)
-     function inc(){
-       setcount(count+1)
-    }
-       function dec(){
-        setcount(count-1)
-      }
+     const count=UseCounter()
       return<div>
-              {/* <h1> hyderbad</h1> */}
-               <h1>count:{count}</h1>
-               <button onClick={inc}>++</button>
-<button onClick={dec}>--</button>
-            </div>
+               <h1>{count}</h1>
+                </div>
             
         }
     

@@ -12,7 +12,7 @@ const ProductDetail =()=>{
   reviews:[]
 })
 useEffect(()=>{
-  (async()=>{
+  (()=>{
   const res=axios.get('https://fsa-api-b4.onrender.com/api/products')
     .then(res=>setproduct(res.data))
     console.log(res)

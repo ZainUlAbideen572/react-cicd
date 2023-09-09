@@ -32,6 +32,8 @@ class Users extends React.Component{
         <span class="visually-hidden">Loading...</span>
       </div>:null}
         {this.state.Users.map(Users=><Useritem Users={Users}/>)}
+        <button className="btn btn-success">prev</button>
+      <button className="btn btn-success">next</button>
     </div>
     }
 }

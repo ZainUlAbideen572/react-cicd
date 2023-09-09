@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios"
 import Error from "../Common/Error";
-import Loader from "../Common/Loader";
+
 import CredentialsList from "./CredentialsList";
-class Credentials extends React.Component{
-    state={
-        Users:[],
-        haserror:false,
-        Loading:false
-    }
-    constructor(){
-        super()
-        axios.get('https://api.github.com/users')
-        .then(res=>{
-       this.setState({Users:res.data})
-        })
-        .catch(err=>{
-            this.setState({haserror:true,Loading:true})
-        })
-        
-    }
-    render(){
+  function Credentials() {
+    const[Users,setUsers]=useState([{
+      data:{}
+   }])
+      const[haserror,sethaserror]=useState(false)
+    
+useEffect(()=>{
+axios.get(`https://localhost:4000/page/${1}/limit/${5}`)
+    .then(response=>setUsers(response.data),sethaserror(false))
+    .catch(haserror=>sethaserror(true))
+    },[])
+    const onprev=()=>{
+      console.log('prev')}
+    const onnext=()=>{
+      console.log('next')}
+
         return<div>
-       {this.state.haserror?<Error/>:null }
-      {this.state.Loading?<Loader/>:null} 
-      {this.state.Users.map(Credentials=><CredentialsList Credentials={Credentials}/>)}
+       {haserror?<Error/>:null }
+      {/* {this.state.Loading?<Loader/>:null}  */}
+      <div className="row">
+        <div className="col-1">
+    <button onClick={onprev} className="btn btn-outline-secondary">
+    <i class="fa-solid fa-chevron-left"></i></button>
+        </div>
+        <div className="col-1">
+    <button onClick={onnext} className="btn btn-outline-secondary"> <i class="fa-solid fa-chevron-right "></i></button>
+        </div>
+      </div>
+      {Users.map(Credentials=><CredentialsList Credentials={Credentials}/>)}
+     
         </div>
     }
-}
+
 export default Credentials;
